@@ -3,13 +3,9 @@ from .models import Post
 from film.models import film_profile
 
 
-
 # Create your views here.
 def home(request):
-    context = {
-        'posts': Post.objects.all()
-    }
-    return render(request, 'home.html', context)
+    return render(request, 'home.html', {'films': film_profile.objects.all()})
 
 def about(request):
     return render(request, 'about.html', {'title': 'About'})
