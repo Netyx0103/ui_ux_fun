@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {                                                                                                                
+    font-family: roboto, sans-serif;
+    text-decoration: none;
+}
+
+body {
+    background-color: #121212;
+}
+
+#banner {                                                                                                          
+    width: 100%;
+    height: 450px;                                                                                              
+    /* margin: 0 auto; */
+    background-image: url("banner.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+#banner-container {                                                                                                
+    margin: auto;                                                                                                  
+    vertical-align: middle;                                                                                       
+}
+
+.banner-heading, .banner-contents {                                                                                
+    color: white;
+    text-align: center;                                                                                            
+}
+
+.banner-heading {                                                                                                  
+    font-size: 72px;                                                                                               
+}
+
+.banner-contents {                                                                                                 
+    font-size: 32px;
+}
+
+#banner-links-p {                                                                                                  
+    text-align: center;
+}
+
+#banner-links-p a {         
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: white;
+    background-color: #007bff;
+}
+
+#post-all {
+    display: grid;
+    grid-template-columns: repeat( auto-fill, 482px);
+    justify-content: center;
+}
+
+.post-main {
+    display: inline-block;
+    width: 480px;
+    border-style: solid;
+    border-color: #121212;
+    text-align: center;
+    background-color: black;
+}
+
+.post-image {
+    height: 250px;
+    width: 460px;
+    border-style: solid;
+    border-color: lightgrey;
+}
+
+.post-details {
+    height: 80px;
+    width: 475px
+}
+
+.post-details h4, h5 {
+    color: white;
+}
+
+.post-details h4 {
+    font-size: 20px;
+}
+
+.post-details h5 {
+    font-size: 15px;
+}
+
+/* light mode :) */
+.post-main.light-mode {
+    background-color: white;
+}
+
+.post-image.light-mode {
+    border-color: black;
+}
+
+.post-details.light-mode h4, h5 {
+    color: black;
+}
