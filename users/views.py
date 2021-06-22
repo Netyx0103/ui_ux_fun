@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 
 # Create your views here.
-def register(request):
+def registerstream(request):
     if request.method == "POST":
         form = UserRegisterForm(request.POST)
         if form.is_valid():
@@ -14,7 +14,7 @@ def register(request):
             return redirect('login')
     else:
         form = UserRegisterForm()
-    return render(request, 'register.html', {'form': form})
+    return render(request, 'registerstream.html', {'form': form})
 
 @login_required
 def profile(request):
@@ -35,3 +35,12 @@ def profile(request):
     }
     return render(request, 'profile.html', context)
 
+def register(request, *args, **kwargs):
+    print(args, kwargs)
+    print(request.user)
+    return render(request, "register.html", {})
+
+def registernft(request, *args, **kwargs):
+    print(args, kwargs)
+    print(request.user)
+    return render(request, "registernft.html", {})
