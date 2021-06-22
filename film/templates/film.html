@@ -1,39 +1,123 @@
-{% extends "base.html" %}
-{% load crispy_forms_tags %}
-{% block content %}
-    {% if Film.film_name %}
-        <h1>{{ Film.film_name }}</h1>
-        <p>{{ Film.film_summary }}</p>
-        <h3>Reviews:</h3><hr \>
+{% extends "base.html" %} {% load crispy_forms_tags %} 
+{% block content %} 
+{% if Film.film_name %}
+<style>
+body{
+    font-size:17px;
+}
+  .review {
+    font-size: 25px;
+  }
+  .heading {
+    font-size: 20px;
+  }
+  .date {
+    font-size: 16px;
+    color: rgb(154, 154, 154);
+  }
+  .btndelete {
+    border: none;
+    background-color: inherit;
+    padding: 3px 3px;
+    font-size: 15px;
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 4px;
+  }
+  .btnedit {
+    border: rgb(32, 32, 32);
+    color: rgb(88, 88, 88);
+    border-style: solid;
+    border-width: 1px;
+    background-color: inherit;
+    padding: 3px 3px;
+    font-size: 15px;
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 3px;
+  }
+  .btnedit:hover {
+    border-color: rgb(78, 78, 78);
+    color: white;
+    background-color: rgb(78, 78, 78);
+  }
+
+  .btndelete {
+    color: red;
+  }
+  .align {
+    margin-top: 10px;
+  }
+  .edit {
+    font-size: 10px;
+  }
+  .filmtext {
+    display: flex;
+    justify-content: space-between;
+  }
+  .filmphoto {
+    width:25%;
+    margin-right: 100px;
+  }
+  .filmsummary {
+    width: 50%;
+  }
+  .everything {
+    width: 75%;
+    margin: auto;
+  }
+</style>
+<br />
+<div class="everything">
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+    crossorigin="anonymous"
+  />
+  <h1>{{ Film.film_name }}</h1>
+  <div class="filmtext">
+    <p class="filmsummary">{{ Film.film_summary }}</p>
+    <img
+      class="filmphoto"
+      src="/media/{{ Film.film_image }}"
+    />
+  </div>
+  <br />
+  <h3>Reviews:</h3>
+  <hr \ />
         {% if user.is_authenticated %}
-            <form method="POST">
-                {% csrf_token %}
-                {{ Form.as_p }}
-                <button type="submit">Add review!</button>
-            </form>
-            <hr />
-        {% endif %}
+  <form method="POST">
+    {% csrf_token %} {{ Form.as_p }}
+    <button class="btnedit" type="submit">Add review!</button>
+  </form>
+  <hr />
+        {% endif %} 
         {% for review in Review %}
-            <h3>Review by {{ review.author }} at {{ review.date_posted }}</h3>
-            <p>{{ review.content }}</p>
+  <h3 class="heading">Review by {{ review.author }}</h3>
+  <h4 class="date">{{ review.date_posted }}</h4>
+  <p class="review">{{ review.content }}</p>
             {% if review.author == currentuser %}
-            <!-- note: these forms must have these names, otherwise deleting and editing will not work          -->
-            <!-- if you can find some way to give the reviewid to the django without these forms change it :)   -->
-                <form method="POST">
-                    {% csrf_token %}
-                    <input type="hidden" name="deleteid" value="{{ review.id }}">
-                    <button type="submit">Delete review</button>
-                </form>
-                <form method="POST">
-                    {% csrf_token %}
-                    <input type="hidden" name="reviewid" value="{{ review.id }}">
-                    <input type="text" name="changecontents">
-                    <button type="submit">Edit review</button>
-                </form>
+  <!-- note: these forms must have these names, otherwise deleting and editing will not work          -->
+  <!-- if you can find some way to give the reviewid to the django without these forms change it :)   -->
+  <form method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="reviewid" value="{{ review.id }}" />
+    <input placeholder="Edit review" type="text" name="changecontents" />
+    <button class="btnedit" type="submit">Edit</button>
+  </form>
+  <div class="align">
+    <form method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="deleteid" value="{{ review.id }}" />
+      <button class="btndelete" type="submit">Delete review</button>
+    </form>
             {% endif %}
-            <hr />
-        {% endfor %}
+    <hr />
+        {% endfor %} 
     {% else %}
-        <p>this film doesn't exist</p>
-    {% endif %}
+    <p>this film doesn't exist</p>
+  </div>
+</div>
+    {% endif %} 
 {% endblock content %}
