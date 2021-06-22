@@ -49,7 +49,7 @@ body {
     font-size: 17px;
 }
 
-#navbar form input[type="search"] {
+#navbar-search-box {
     min-width: 500px;
     padding: 5px;
     font-size: 15px;
@@ -89,8 +89,8 @@ body {
     margin-top: 60px;
 }
 
-/* sidebar stuff and blowjobs*/
-.sidenav {
+/* sidebar stuff */
+#sidenav {
     height: 100%;
     width: 0;
     position: fixed;
@@ -103,7 +103,7 @@ body {
     padding-top: 60px;
 }
 
-.sidenav a {
+#sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 17px;
@@ -112,11 +112,11 @@ body {
     transition: 0.1s;
 }
 
-.sidenav a:hover {
+#sidenav a:hover {
     color: #f8f8f8;
 }
 
-.sidenav .closebtn {
+#sidenav .closebtn {
     position: absolute;
     top: 0;
     right: 200px;
@@ -125,6 +125,52 @@ body {
 }
 
 @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 25px;}
+    #sidenav {padding-top: 15px;}
+    #sidenav a {font-size: 25px;}
+}
+
+/* light mode >_< */
+#navbar.light-mode {
+    background-color: #F8F8F8;
+}
+
+#navbar a.light-mode {
+    color: #212529;
+}
+
+#navbar a.light-mode:hover {
+    color: #000000;
+}
+
+#navbar form.light-mode {
+    color: #212529;
+}
+
+#navbar-search-box.light-mode {
+    border: 1px #CED4DA;
+    background: #CED4DA;
+}
+
+#navbar form button.light-mode {
+    background: #F8F8F8;
+    color: #212529;
+    border: 1px solid #CED4DA;
+}
+
+#navbar form button.light-mode:hover {
+    background: #212529;
+    color: #F8F8F8;
+    border: 1px solid #212529;
+}
+
+#sidenav.light-mode {
+    background-color: #F8F8F8;
+}
+
+#sidenav a.light-mode {
+    color: #212529;
+}
+
+#sidenav a.light-mode:hover {
+    color: #000000;
 }
