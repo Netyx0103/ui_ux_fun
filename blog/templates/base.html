@@ -10,51 +10,52 @@
   </head>       
   
   <body>
-    <div id="navbar">
-      <a href="javascript:void(0)" class="closebtn" onclick="openNav()">&#9776;</a>
+    <div id="navbar" class="peasant">
+      <a href="javascript:void(0)" class="closebtn peasant" onclick="openNav()">&#9776;</a>
 
-      <a href="/">
+      <a href="/" class="peasant">
         <img src="/media/hohey_icon/icon.png" style="height: 20px; width: 20px; margin-right: 10px;">
         <strong>Hohey 好戲</strong>
       </a>
 
-      <form id="navbar-search-form" method="POST" action="{% url 'search-films' %}">
+      <form id="navbar-search-form" class="peasant" method="POST" action="{% url 'search-films' %}">
         {% csrf_token %}
-        <input id="navbar-search-box" type="search" placeholder="Search Films" aria-label="Search" n>
+        <input id="navbar-search-box" class="peasant" type="search" placeholder="Search Films" aria-label="Search" n>
         <button id="navbar-search-button" type="submit"> Search </button>
       </form>
 
-      <a class="navbar-link" href="{% url 'film_list' %}" style="margin-right: 20px;">
+      <a class="navbar-link peasant" href="{% url 'film_list' %}" style="margin-right: 20px;">
          <strong>Films</strong>
       </a>
 
       {% if user.is_authenticated %}
-      <a class="navbar-link" href="{% url 'profile' %}" style="margin-right: 20px;">
+      <a class="navbar-link peasant" href="{% url 'profile' %}" style="margin-right: 20px;">
         <strong>Profile</strong>
       </a>
 
-      <a class="navbar-link"href="{% url 'logout' %}">
+      <a class="navbar-link peasant"href="{% url 'logout' %}">
         <strong>Logout</strong>
       </a>
       {% else %}
 
-      <a class="navbar-link" href="{% url 'register' %}" style="margin-right: 20px;">
+      <a class="navbar-link peasant" href="{% url 'register' %}" style="margin-right: 20px;">
         <strong>Register</strong>
       </a>
 
-      <a class="navbar-link" href="{% url 'login' %}">
+      <a class="navbar-link peasant" href="{% url 'login' %}">
         <strong>Log In</strong>
       </a>
 
       {% endif %}
     </div>
 
-    <div id="mySidenav" class="sidenav">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#9776;</a>
-      <a href="#">Watchlist</a>
-      <a href="#">Favourites</a>
-      <a href="#">Watch later</a>
-      <a href="#">Followers</a>
+    <div id="sidenav" class="peasant">
+      <a href="javascript:void(0)" class="closebtn peasant" onclick="closeNav()">&#9776;</a>
+      <a href="#" class="peasant">Watchlist</a>
+      <a href="#" class="peasant">Favourites</a>
+      <a href="#" class="peasant">Watch later</a>
+      <a href="#" class="peasant">Followers</a>
+      <a href="javascript:void(0)" class="peasant" id="lightmode-button" onclick="make_light()">Toggle light/dark mode</a>
     </div>
     
     <div id="content">
@@ -63,13 +64,29 @@
 
     <script>
     // sidebar stuff
- 
+      var lightmode = false;
+      
       function openNav() {
-         document.getElementById("mySidenav").style.width = "250px";
+         document.getElementById("sidenav").style.width = "250px";
       }
          
       function closeNav() {
-         document.getElementById("mySidenav").style.width = "0";
+         document.getElementById("sidenav").style.width = "0";
+      }
+
+      //lightmode
+      function make_light() {
+	  var peasants = document.getElementsByClassName ("peasant");
+	  lightmode = !lightmode;
+          if (lightmode) {
+	      for (var i = 0 ; i < peasants.length ; i++) {
+		  peasants[i].classList.remove ("light-mode");
+	      }
+	  } else {
+              for (var i = 0 ; i < peasants.length ; i++) {
+		  peasants[i].classList.add ("light-mode");
+	      }
+	  }
       }
     </script>
 </body>
