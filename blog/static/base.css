@@ -1,5 +1,6 @@
 /* navbar stuff */
 body {
+    background-color: #1E1E1E;
     margin: 0;
     font-size: 28px;
     font-family: Arial, Helvetica, sans-serif;
@@ -130,6 +131,10 @@ body {
 }
 
 /* light mode >_< */
+body.light-mode {
+    background-color: #EFEFEF;
+}
+
 #navbar.light-mode {
     background-color: #F8F8F8;
 }
