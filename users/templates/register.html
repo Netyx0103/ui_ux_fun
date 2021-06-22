@@ -1,21 +1,63 @@
-{% extends "base.html" %}
-{% load crispy_forms_tags %}
-{% block content %}
-    <div class="content-section">
-        <form method="POST">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Join Today!</legend>
-                {{ form|crispy }}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Sign Up</button>
-            </div>
-            <div class="border-top pt-3">
-                <small class="text-muted">
-                    Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
-                </small>
-            </div>
-        </form>
-    </div>
+{% extends "base.html" %} {% load crispy_forms_tags %} {% block content %}
+<style>
+  body{
+    font-size:17px;
+  }
+  .everything {
+    width: 70%;
+    margin: auto;
+  }
+  .leftblock {
+    width: 47%;
+    margin-right: 3%;
+    float: left;
+  }
+  .rightblock {
+    margin-left: 3%;
+    width: 47%;
+    float: right;
+  }
+  .button {
+    border: #6f00ff;
+    color: #6f00ff;
+    border-style: solid;
+    border-width: 1px;
+    background-color: inherit;
+    padding: 6px 6px;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 3px;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .button:hover {
+    transition: 0.2s;
+    border-color: #6f00ff;
+    text-decoration: none;
+    color: white;
+    background-color: #6f00ff;
+  }
+</style>
+<br />
+<div class="everything">
+  <div class="leftblock">
+    <h2>Register a Streaming Account</h2>
+    <p >
+      Save your watch history and favourite films, and join film discussions
+    </p>
+    <a class="button" href="{% url 'registerstream' %}"
+      >Register a Streaming Account</a
+    >
+  </div>
+  <div class="rightblock">
+    <h2>Register an NFT account</h2>
+    <p>
+      Save your watch history and favourite films, and join film discussions
+    </p>
+    <p>Gain access to NFT features such as crowdfunding, trading, etc.</p>
+
+    <a class="button" href="{% url 'registernft' %}">Register a NFT Account</a>
+  </div>
+</div>
 {% endblock content %}
